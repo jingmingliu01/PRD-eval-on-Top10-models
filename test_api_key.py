@@ -1,3 +1,10 @@
+import json
+from dotenv import load_dotenv
+import os
+
+load_dotenv(override=True)  # try load_dotenv(override=True) for different behavior
+
+
 # OpenAI Models
 from openai import OpenAI
 
@@ -25,7 +32,7 @@ url = "https://api.together.xyz/v1/models"
 
 headers = {
     "accept": "application/json",
-    "authorization": "Bearer cfb73dca729628106d333426a418ca08ace664ad6f0512e31c130d3b765240ff"
+    "authorization": "Bearer " + os.getenv("TOGETHER_API_KEY")
 }
 
 response = requests.get(url, headers=headers)
